@@ -1,0 +1,54 @@
+{% extends "admin_dashboard/navbar_admin.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+<div class="row  my-4">
+{% include "admin_dashboard/sidebar_admin.html" %}
+   <div class="col-md-8"> 
+	 <form action="{% url 'store_form' %}" method="post" enctype="multipart/form-data">
+			{% csrf_token %}
+			<div class="form-row">
+			<div class="form-group col-md-6">
+			<label>Product name</label>
+			{{form.product_name}}
+			</div>
+			<div class="form-group col-md-6">
+			<label>Slug</label>
+			{{form.slug}}
+			</div>
+			<div class="form-group col-md-12">
+			<label>Description</label>
+			{{form.description}}
+			{% comment %} <textarea name="{{form.description}}" rows="2" class="form-control"></textarea> {% endcomment %}
+			</div>
+			<div class="form-group col-md-12">
+			<label>Price</label>
+			{{form.price}}
+			</div>
+			</div>
+			<div class="form-row">
+			<div class="form-group col-md-4">
+			<label>Image</label>
+			{{form.image}}
+			</div>
+      <div class="form-group col-md-4">
+			<label>Stock</label>
+			{{form.stock}}
+			</div>
+			<div class="form-group col-md-4">
+			<label>Category</label>
+			{{form.category}}
+			</div>
+			</div>
+	   <input class="btn btn-success btn-block" type="submit">
+			</form>
+		<a href="{% url 'productgallery' %}">add more product</a>
+
+    </div>
+    </div>
+    </div>
+ {% endblock %}
+
+
+

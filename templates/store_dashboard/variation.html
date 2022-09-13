@@ -1,0 +1,45 @@
+{% extends "admin_dashboard/navbar_admin.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container">
+  <br>
+ <div class="text-align: center">{% include 'partial/alerts.html' %}</div>
+    <div class="row  my-4">
+        <div class="col-md-4"> 
+	      <form action="{% url 'variation' %}" method="post" enctype="multipart/form-data">
+			{% csrf_token %}
+            {{form|crispy }}
+             <input class="btn btn-success btn-block" type="submit">
+          </form>
+         </div>
+    <div class="col-md-8"> 
+      <table class="table bg-white">
+        <thead class=""  style="background-color: white;">
+            <tr>
+                <th scope="col">Product</th>
+                <th scope="col">Variation Category</th>
+                <th scope="col">Variation Value</th>
+                <th scope="col">Active</th>
+                <th scope="col">Activity</th> 
+            </tr>
+            
+        </thead>
+        <tbody>
+             {% for variation in variations %}
+            <tr>
+               <td>{{variation.product}}</td>
+               <td>{{variation.variation_category}}</td>
+               <td>{{variation.variation_value}}</td>
+               <td>{{variation.is_active}}</td>
+               <td>
+                <a class="btn btn-info btn-sm" href="{% url 'variation-update' variation.pk %}">Edit</a>
+                <a class="btn btn-danger btn-sm" href="{% url 'variation-delete' variation.pk %}">Delete</a>
+              </td>
+            </tr>
+            {% endfor %}           
+        </tbody>  
+    </table>
+    </div>
+    </div>
+</div>
+ {% endblock %}

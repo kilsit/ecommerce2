@@ -1,0 +1,24 @@
+{% extends "admin_dashboard/navbar_admin.html" %}
+{% block content %}
+
+<div class="container">
+    <div class="row m-5">
+        <div class="col-md-6 offset-md-3">
+            <div class="alert alert-danger">
+                <h4>Are You sure you want to delete?</h4>
+            </div>
+            <form method="POST">
+            {% csrf_token %}
+            {{ form }}
+
+            <a class="btn btn-secondary" href="{% url 'variation' %}">Cancel</a>
+            <input class="btn btn-danger" type="submit" value="confirm">
+
+            </form>
+    </div>
+        
+</div>
+</div>
+
+
+{% endblock  %}

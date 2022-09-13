@@ -1,0 +1,47 @@
+
+{% extends "admin_dashboard/navbar_admin.html" %}
+{% load static %}
+
+{% block content %}
+<!-- ========================= SECTION PAGETOP ========================= -->
+<div class="container">
+<br>
+ <div class="text-align: center">{% include 'partial/alerts.html' %}</div>
+<div class="row" style="margin-top: 50px;">
+
+  
+    <div class="col-md-12">
+            <table class="table bg-white">
+                <thead class=""  style="background-color: white;">
+                    <tr>
+                        <th scope="col">image</th>
+                        <th scope="col">product_name</th>
+                        <th scope="col">price</th>
+                        <th scope="col">stock</th>
+                        <th>category</th>
+  
+                        <th scope="col">Details</th>
+                        <th scope="col">Delete Post</th>
+                    </tr>
+            
+                </thead>
+                <tbody>
+                  {% for product in products %}
+                    <tr>
+                       <td><img src="{{product.image.url}}" style="height: 60px;" alt=""></td>
+                       <td>{{ product.product_name }}</td>
+                       <td>{{ product.price}}</td>
+                       <td>{{ product.stock}}</td>
+                       <td> {{product.category}}</td>
+                       <td><a href="{{ product.get_url }}">View Details</a></td>
+                        <td>
+                        <a class="btn btn-info btn-sm" href="{% url 'store-update' product.slug %}">Edit</a>
+                        <a class="btn btn-danger btn-sm" href="{% url 'store-delete' product.slug %}">Delete</a>
+                        </td>
+                    </tr>
+                  {% endfor %}           
+                </tbody>  
+            </table>
+    </div>
+</div>
+{% endblock %}

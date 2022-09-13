@@ -1,0 +1,41 @@
+
+{% extends "admin_dashboard/navbar_admin.html" %}
+{% load static %}
+
+{% block content %}
+<!-- ========================= SECTION PAGETOP ========================= -->
+<div class="container">
+ 
+<div class="row" style="margin-top: 30px">
+    <div class="col-md-12">
+            <table class="table bg-white">
+                <thead class=""  style="background-color: white;">
+                    <tr>
+                        <th scope="col">Order Number</th>
+                        <th scope="col">Full Name</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">City</th>
+                        <th scope="col">Order Total</th>
+                        <th scope="col">Tax</th>                    
+                        <th scope="col">Created_at</th>
+                    </tr>
+            
+                </thead>
+                <tbody>
+                  {% for order_product in order_products %}
+                    <tr>
+                       {% comment %} <td>{{order_product.order}}</td> {% endcomment %}
+                       <td>{{order_product.payment}}</td>
+                       <td>{{order_product.user}}</td>
+                       <td>{{order_product.product}}</td>
+                       <td>{{order_product.variation}}</td>
+                       <td>{{order_product.quantity}}</td>
+                       <td>{{order_product.product_price}}</td>
+                    </tr>
+                  {% endfor %}           
+                </tbody>  
+            </table>
+    </div>
+</div>
+{% endblock %}

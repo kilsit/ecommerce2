@@ -1,0 +1,31 @@
+{% extends "admin_dashboard/navbar_admin.html" %}
+{% block content %}
+<div class="container">
+  <br>
+ <div class="text-align: center">{% include 'partial/alerts.html' %}</div>
+    <div class="col-md-8"> 
+      <table class="table bg-white">
+        <thead class=""  style="background-color: white;">
+            <tr>
+                <th scope="col">Category Name</th>
+                 <th scope="col">slug</th>
+                <th scope="col">Activity</th>
+            </tr>   
+        </thead>
+        <tbody>
+             {% for category in links %}
+            <tr>
+               <td><a href="{{ category.get_url }}">{{category.category_name}}</td>
+              <td><a href="{{ category.get_url }}">{{category.slug}}</td> 
+               <td>
+                <a class="btn btn-info btn-sm" href="{% url 'category-update' category.pk %}">Edit</a>
+                <a class="btn btn-danger btn-sm" href="{% url 'category-delete' category.pk %}">Delete</a>
+              </td>
+            </tr>
+            {% endfor %}           
+        </tbody>  
+    </table>
+    </div>
+    </div>
+</div>
+ {% endblock %}

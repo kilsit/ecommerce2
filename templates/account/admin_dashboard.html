@@ -1,0 +1,14 @@
+{% comment %} {% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+   {% if user.is_authenticated and user.is_staff and user.is_superuser %}
+
+      <h4>Welcome to Admin Dashboard</h4>
+  
+
+   {% endif %}
+
+
+{% endblock %} {% endcomment %}
